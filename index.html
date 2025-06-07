@@ -20,23 +20,26 @@
     function cleanText() {
       let text = document.getElementById('inputText').value;
 
-      // Remove line breaks
-      text = text.replace(/\r?\n|\r/g, ' ');
-
-      // Collapse multiple spaces into one
-      text = text.replace(/\s+/g, ' ').trim();
+      // Replace non-breaking spaces & invisible characters
+      text = text.replace(/\u00A0|\u200B|\uFEFF/g, ' ');
 
       // Remove HTML tags
       text = text.replace(/<[^>]*>/g, '');
 
-      // Remove special characters (keep basic punctuation)
-      text = text.replace(/[^\w\s.,!?'"()-]/g, '');
+      // Remove emojis and most non-basic characters
+      text = text.replace(/[^\w\s.,!?'"()\-]/g, '');
 
-      // Replace smart quotes and dashes
+      // Remove empty parentheses and brackets
+      text = text.replace(/\(\s*\)/g, '');
+
+      // Normalize dashes and smart quotes
       text = text
         .replace(/[“”]/g, '"')
         .replace(/[‘’]/g, "'")
-        .replace(/[—–]/g, '-');
+        .replace(/[—–]+/g, '-');
+
+      // Remove line breaks and collapse extra spaces
+      text = text.replace(/\r?\n|\r/g, ' ').replace(/\s+/g, ' ').trim();
 
       document.getElementById('outputText').textContent = text;
     }
@@ -54,4 +57,3 @@
   </script>
 </body>
 </html>
-
