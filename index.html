@@ -8,9 +8,9 @@
 </head>
 <body>
   <h1>Text Cleaner</h1>
-  
+
   <textarea id="inputText" rows="10" cols="50" placeholder="Paste your text here..."></textarea><br>
-  
+
   <button onclick="cleanText()">Clean Text</button>
   <button onclick="copyText()">Copy Cleaned Text</button>
 
@@ -19,7 +19,25 @@
   <script>
     function cleanText() {
       let text = document.getElementById('inputText').value;
-      text = text.replace(/\r?\n|\r/g, ' ').replace(/\s+/g, ' ').trim();
+
+      // Remove line breaks
+      text = text.replace(/\r?\n|\r/g, ' ');
+
+      // Collapse multiple spaces into one
+      text = text.replace(/\s+/g, ' ').trim();
+
+      // Remove HTML tags
+      text = text.replace(/<[^>]*>/g, '');
+
+      // Remove special characters (keep basic punctuation)
+      text = text.replace(/[^\w\s.,!?'"()-]/g, '');
+
+      // Replace smart quotes and dashes
+      text = text
+        .replace(/[“”]/g, '"')
+        .replace(/[‘’]/g, "'")
+        .replace(/[—–]/g, '-');
+
       document.getElementById('outputText').textContent = text;
     }
 
@@ -36,3 +54,4 @@
   </script>
 </body>
 </html>
+
