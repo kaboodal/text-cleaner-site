@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Cleaner – Clean Up Your Text Instantly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <h1>Text Cleaner</h1>
+  <textarea id="input" rows="10" cols="50" placeholder="Paste your text here..."></textarea><br>
+  <button onclick="clean()">Clean Text</button>
+  <pre id="output" style="white-space: pre-wrap; margin-top: 10px;"></pre>
+
+  <script>
+    function clean() {
+      let text = document.getElementById('input').value;
+      text = text.replace(/\r?\n|\r/g, ' ').replace(/\s+/g, ' ').trim();
+      document.getElementById('output').textContent = text;
+    }
+  </script>
+</body>
+</html>
