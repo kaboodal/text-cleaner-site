@@ -4,16 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Text Cleaner Tool – Clean, Fix & Format Your Text</title>
-  <meta name="description" content="Remove line breaks, extra spaces, HTML tags, and formatting from copied text. Clean and format text with one click." />
-  <link rel="icon" href="data:,">
+  <meta name="description" content="Remove line breaks, extra spaces, HTML tags, punctuation and more for free. Clean and format text instantly online." />
+  <link rel="icon" href="logo-text-cleaner.png" />
   <style>
-    <header style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-  <img src="logo-text-cleaner.png" alt="Text Cleaner Logo" style="height: 64px;" />
-  <div>
-    <h1 style="margin: 0;">Text Cleaner</h1>
-    <p style="margin: 0; font-size: 1rem; color: #555;">Remove Line Breaks, Extra Spaces, HTML, Punctuation & More — For Free</p>
-  </div>
-</header>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -50,12 +43,31 @@
     #options {
       margin-bottom: 1rem;
     }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    header img {
+      height: 64px;
+    }
+    header p {
+      margin: 0;
+      font-size: 1rem;
+      color: #555;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Text Cleaner Tool</h1>
-  <p>Paste messy text below and clean it instantly.</p>
+  <header>
+    <img src="logo-text-cleaner.png" alt="Text Cleaner Logo" />
+    <div>
+      <h1 style="margin: 0;">Text Cleaner</h1>
+      <p>Remove Line Breaks, Extra Spaces, HTML, Punctuation & More — For Free</p>
+    </div>
+  </header>
 
   <textarea id="inputText" placeholder="Paste your messy text here..."></textarea>
 
@@ -79,44 +91,15 @@
   <script>
     function cleanText() {
       let text = document.getElementById("inputText").value;
-
-      // Remove HTML tags
       text = text.replace(/<[^>]+>/g, "");
-
-      // Replace smart quotes and em dashes
-      text = text.replace(/[“”]/g, '"')
-                 .replace(/[‘’]/g, "'")
-                 .replace(/—/g, "-");
-
-      // Convert to lowercase if selected
-      if (document.getElementById("lowercase").checked) {
-        text = text.toLowerCase();
-      }
-
-      // Remove numbers
-      if (document.getElementById("removeNumbers").checked) {
-        text = text.replace(/[0-9]/g, "");
-      }
-
-      // Remove punctuation
-      if (document.getElementById("removePunctuation").checked) {
-        text = text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@\[\]\+<>\\|]/g,"");
-      }
-
-      // Remove repeated punctuation
-      if (document.getElementById("removeRepeatedPunctuation").checked) {
-        text = text.replace(/([.,!?;:]){2,}/g, '$1');
-      }
-
-      // Replace multiple spaces with one
+      text = text.replace(/[“”]/g, '\"').replace(/[‘’]/g, "'").replace(/—/g, "-");
+      if (document.getElementById("lowercase").checked) text = text.toLowerCase();
+      if (document.getElementById("removeNumbers").checked) text = text.replace(/[0-9]/g, "");
+      if (document.getElementById("removePunctuation").checked) text = text.replace(/[.,\\/#!$%\\^&\\*;:{}=\\-_`~()@\\[\\]+<>\\\\|]/g,"");
+      if (document.getElementById("removeRepeatedPunctuation").checked) text = text.replace(/([.,!?;:]){2,}/g, '$1');
       text = text.replace(/\s{2,}/g, " ");
-
-      // Remove leading/trailing whitespace
       text = text.trim();
-
       document.getElementById("outputText").value = text;
-
-      // Update stats
       const words = text.trim().split(/\s+/).filter(Boolean);
       const wordCount = words.length;
       const charCount = text.length;
