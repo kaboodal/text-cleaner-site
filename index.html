@@ -2,60 +2,164 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Text Cleaner Tool</title>
-  <meta name="description" content="Clean, format, and simplify your text. Remove line breaks, extra spaces, HTML, punctuation & more.">
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Clean messy text, remove line breaks, extra spaces & more. TextCleanerTool helps you instantly sanitize and format your content."/>
+  <meta name="keywords" content="text cleaner, remove line breaks, clean text, format text, text cleaning tool, extra spaces, online text formatter"/>
+  <meta name="author" content="TextCleanerTool"/>
+  <title>Text Cleaner Tool – Clean, Format & Fix Messy Text</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f8fa;
+      color: #333;
+    }
+
+    header {
+      background: #002147;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header img {
+      max-height: 50px;
+      margin-bottom: 0.5rem;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0.2rem 0;
+    }
+
+    .container {
+      padding: 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      margin-bottom: 1rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .buttons button {
+      flex: 1;
+      min-width: 120px;
+      padding: 0.6rem;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      background: #002147;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .buttons button:hover {
+      background: #003367;
+    }
+
+    footer {
+      background: #002147;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+      .buttons {
+        flex-direction: column;
+      }
+      .buttons button {
+        width: 100%;
+      }
+      textarea {
+        min-height: 120px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header style="text-align: center; padding: 2rem;">
-    <img src="logo.png" alt="Text Cleaner Tool logo" width="100" />
+  <header>
+    <img src="logo.png" alt="Text Cleaner Tool Logo"/>
     <h1>Text Cleaner Tool</h1>
-    <p>Remove Line Breaks, Extra Spaces, HTML, Punctuation & More</p>
+    <p>Remove Line Breaks, Extra Spaces & More</p>
   </header>
 
-  <main style="max-width: 800px; margin: auto; padding: 2rem;">
-    <textarea id="inputText" rows="12" placeholder="Paste your messy text here..." style="width: 100%; padding: 1rem;"></textarea>
-    <div style="margin: 1rem 0;">
-      <button onclick="cleanText()">Clean Text</button>
-      <button onclick="copyText()">Copy Cleaned Text</button>
-    </div>
-    <textarea id="outputText" rows="12" placeholder="Your cleaned text will appear here..." style="width: 100%; padding: 1rem;"></textarea>
-  </main>
+  <div class="container">
+    <textarea id="input" placeholder="Paste your messy text here..."></textarea>
 
-  <footer style="text-align:center; padding: 1rem; background: #f1f1f1; font-size: 0.9rem;">
+    <div class="buttons">
+      <button onclick="cleanText()">Clean Text</button>
+      <button onclick="copyText()">Copy Output</button>
+      <button onclick="clearText()">Clear</button>
+    </div>
+
+    <textarea id="output" placeholder="Cleaned text will appear here..." readonly></textarea>
+  </div>
+
+  <footer>
     <p>
       <a href="privacy.html">Privacy Policy</a> |
       <a href="terms.html">Terms of Use</a> |
       <a href="contact.html">Contact</a>
     </p>
-    <p>© 2024 TextCleanerTool.com</p>
+    <p>&copy; 2025 TextCleanerTool</p>
   </footer>
 
   <script>
     function cleanText() {
-      let text = document.getElementById("inputText").value;
+      let text = document.getElementById("input").value;
 
-      // Cleaning logic
-      text = text.replace(/\r\n|\r|\n/g, " "); // Remove line breaks
-      text = text.replace(/\s+/g, " "); // Collapse multiple spaces
-      text = text.replace(/<[^>]*>/g, ""); // Remove HTML tags
-      text = text.replace(/[\u200B-\u200D\uFEFF]/g, ""); // Zero-width characters
-      text = text.replace(/[“”‘’]/g, '"'); // Smart quotes to plain
-      text = text.replace(/[–—]/g, "-"); // Dashes to hyphen
-      text = text.replace(/[•·▪]/g, ""); // List dots
-      text = text.trim();
+      text = text
+        .replace(/\r\n|\r|\n/g, " ") // remove line breaks
+        .replace(/\s+/g, " ")        // collapse multiple spaces
+        .replace(/—/g, "-")          // em dash to dash
+        .replace(/[^\x20-\x7E]/g, "")// remove special/unicode
+        .replace(/<[^>]*>/g, "")     // remove HTML
+        .trim();
 
-      document.getElementById("outputText").value = text;
+      document.getElementById("output").value = text;
     }
 
     function copyText() {
-      const output = document.getElementById("outputText");
+      const output = document.getElementById("output");
       output.select();
       output.setSelectionRange(0, 99999);
       document.execCommand("copy");
-      alert("Cleaned text copied!");
+      alert("Copied to clipboard!");
+    }
+
+    function clearText() {
+      document.getElementById("input").value = "";
+      document.getElementById("output").value = "";
     }
   </script>
 </body>
