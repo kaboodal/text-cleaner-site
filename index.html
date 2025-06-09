@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Text Cleaner Tool</title>
   <meta name="description" content="Clean up text: remove line breaks, extra spaces, punctuation, HTML tags & more.">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
@@ -19,8 +19,8 @@
       padding: 20px 10px;
       text-align: center;
     }
-    header img {
-      height: 60px;
+    header .logo {
+      height: 80px;
       margin-bottom: 10px;
     }
     h1 {
@@ -91,7 +91,7 @@
 </head>
 <body>
   <header>
-    <img src="logo-text-cleaner.png" alt="Text Cleaner Tool Logo" />
+    <img src="abcb5075-8024-4a12-9fc5-515ef8d26338.png" alt="Text Cleaner Tool Logo" class="logo" />
     <h1>Text Cleaner Tool</h1>
     <div class="tagline">Remove Line Breaks, Extra Spaces, HTML, Punctuation & More</div>
   </header>
@@ -117,11 +117,11 @@
     function cleanText() {
       const input = document.getElementById("inputText").value;
       let output = input
-        .replace(/\r\n|\r|\n/g, " ")
-        .replace(/\s+/g, " ")
-        .replace(/<[^>]*>/g, "")
-        .replace(/[^\w\s.,!?;:'"-]/g, "")
-        .trim();
+        .replace(/<[^>]*>/g, '')            // Remove HTML tags
+        .replace(/[^\w\s.,!?;:'"-]/g, '')   // Remove punctuation/special chars (except basic ones)
+        .replace(/\r\n|\r|\n/g, ' ')        // Replace line breaks with space
+        .replace(/\s+/g, ' ')               // Collapse multiple spaces
+        .trim();                            // Trim leading/trailing
       document.getElementById("outputText").value = output;
     }
 
