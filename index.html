@@ -2,181 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Clean messy text by removing line breaks, extra spaces, punctuation, HTML and more with Text Cleaner Tool."/>
-  <meta name="keywords" content="text cleaner, remove line breaks, clean text, remove HTML, remove punctuation, text formatter"/>
-  <title>Text Cleaner Tool – Clean, Format & Fix Messy Text</title>
-  <link rel="icon" type="image/png" href="logo.png" />
-  
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7842913593670746"
-    crossorigin="anonymous"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Cleaner Tool</title>
+  <meta name="description" content="Clean up text: remove line breaks, extra spaces, punctuation, HTML tags & more.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f4f5f8;
-      color: #222;
+      font-family: 'Inter', sans-serif;
+      background: #f5f6f8;
+      color: #111;
     }
-
     header {
-      background-color: #002147;
+      background-color: #00254d;
       color: white;
+      padding: 20px 10px;
       text-align: center;
-      padding: 1.5rem 1rem;
     }
-
     header img {
-      max-height: 50px;
+      height: 60px;
+      margin-bottom: 10px;
     }
-
-    header h1 {
-      margin: 0.5rem 0 0.2rem;
-      font-size: 1.8rem;
-    }
-
-    header p {
+    h1 {
       margin: 0;
-      font-size: 1rem;
-      color: #cbd5e1;
+      font-size: 24px;
     }
-
-    .container {
+    .tagline {
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    main {
       max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      margin: 30px auto;
+      padding: 0 15px;
     }
-
     textarea {
       width: 100%;
-      min-height: 150px;
-      padding: 1rem;
-      font-size: 1rem;
+      min-height: 160px;
+      margin-bottom: 15px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 14px;
       border-radius: 6px;
       border: 1px solid #ccc;
-      resize: vertical;
-      margin-bottom: 1rem;
     }
-
-    .buttons {
+    .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
     }
-
-    .buttons button {
-      flex: 1 1 150px;
-      padding: 0.75rem;
-      background: #002147;
-      color: #fff;
+    button {
+      flex: 1;
+      background-color: #00254d;
+      color: white;
       border: none;
+      padding: 10px;
       border-radius: 6px;
-      font-size: 0.95rem;
       cursor: pointer;
-      transition: background 0.2s ease;
+      min-width: 100px;
     }
-
-    .buttons button:hover {
-      background: #00366e;
+    button:hover {
+      background-color: #004080;
     }
-
     footer {
-      background: #002147;
-      color: #fff;
+      background-color: #00254d;
+      color: white;
+      padding: 15px 10px;
       text-align: center;
-      padding: 1rem;
-      font-size: 0.85rem;
-      margin-top: 2rem;
+      font-size: 14px;
     }
-
     footer a {
-      color: #fff;
-      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover {
       text-decoration: underline;
     }
-
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.3rem;
-      }
-
-      .buttons {
+      .button-row {
         flex-direction: column;
-      }
-
-      .buttons button {
-        width: 100%;
       }
     }
   </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7842913593670746" crossorigin="anonymous"></script>
 </head>
 <body>
-
   <header>
-    <img src="logo.png" alt="Text Cleaner Tool Logo" />
+    <img src="logo-text-cleaner.png" alt="Text Cleaner Tool Logo" />
     <h1>Text Cleaner Tool</h1>
-    <p>Remove Line Breaks, Extra Spaces & More</p>
+    <div class="tagline">Remove Line Breaks, Extra Spaces, HTML, Punctuation & More</div>
   </header>
 
-  <main class="container">
-    <textarea id="input" placeholder="Paste your messy text here..."></textarea>
-
-    <div class="buttons">
-      <button onclick="removeLineBreaks()">Remove Line Breaks</button>
-      <button onclick="removeExtraSpaces()">Remove Extra Spaces</button>
-      <button onclick="removeHtmlTags()">Remove HTML</button>
-      <button onclick="removePunctuation()">Remove Punctuation</button>
-      <button onclick="convertToPlainText()">Convert to Plain Text</button>
+  <main>
+    <textarea id="inputText" placeholder="Paste your messy text here..."></textarea>
+    <div class="button-row">
+      <button onclick="cleanText()">Clean Text</button>
+      <button onclick="copyOutput()">Copy Output</button>
       <button onclick="clearText()">Clear</button>
     </div>
-
-    <textarea id="output" placeholder="Cleaned text will appear here..." readonly></textarea>
+    <textarea id="outputText" placeholder="Cleaned text will appear here..." readonly></textarea>
   </main>
 
   <footer>
     <a href="privacy.html">Privacy Policy</a> |
     <a href="terms.html">Terms of Use</a> |
     <a href="contact.html">Contact</a>
-    <p>&copy; 2025 TextCleanerTool</p>
+    <br />&copy; 2025 TextCleanerTool
   </footer>
 
   <script>
-    const input = document.getElementById("input");
-    const output = document.getElementById("output");
-
-    function removeLineBreaks() {
-      const cleaned = input.value.replace(/(\r\n|\n|\r)/gm, " ");
-      output.value = cleaned.trim();
-    }
-
-    function removeExtraSpaces() {
-      const cleaned = input.value.replace(/\s+/g, " ");
-      output.value = cleaned.trim();
-    }
-
-    function removeHtmlTags() {
-      const cleaned = input.value.replace(/<[^>]*>/g, "");
-      output.value = cleaned.trim();
-    }
-
-    function removePunctuation() {
-      const cleaned = input.value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-      output.value = cleaned.trim();
-    }
-
-    function convertToPlainText() {
-      const cleaned = input.value
-        .replace(/<[^>]*>/g, "")
+    function cleanText() {
+      const input = document.getElementById("inputText").value;
+      let output = input
+        .replace(/\r\n|\r|\n/g, " ")
         .replace(/\s+/g, " ")
-        .replace(/[^\x20-\x7E]/g, "");
-      output.value = cleaned.trim();
+        .replace(/<[^>]*>/g, "")
+        .replace(/[^\w\s.,!?;:'"-]/g, "")
+        .trim();
+      document.getElementById("outputText").value = output;
+    }
+
+    function copyOutput() {
+      const output = document.getElementById("outputText");
+      output.select();
+      document.execCommand("copy");
     }
 
     function clearText() {
-      input.value = "";
-      output.value = "";
+      document.getElementById("inputText").value = "";
+      document.getElementById("outputText").value = "";
     }
   </script>
 </body>
