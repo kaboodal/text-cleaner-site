@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Cleaner Tool</title>
+  <meta name="description" content="Clean, format, and simplify your text. Remove line breaks, extra spaces, HTML, punctuation & more.">
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header style="text-align: center; padding: 2rem;">
+    <img src="logo.png" alt="Text Cleaner Tool logo" width="100" />
+    <h1>Text Cleaner Tool</h1>
+    <p>Remove Line Breaks, Extra Spaces, HTML, Punctuation & More</p>
+  </header>
+
+  <main style="max-width: 800px; margin: auto; padding: 2rem;">
+    <textarea id="inputText" rows="12" placeholder="Paste your messy text here..." style="width: 100%; padding: 1rem;"></textarea>
+    <div style="margin: 1rem 0;">
+      <button onclick="cleanText()">Clean Text</button>
+      <button onclick="copyText()">Copy Cleaned Text</button>
+    </div>
+    <textarea id="outputText" rows="12" placeholder="Your cleaned text will appear here..." style="width: 100%; padding: 1rem;"></textarea>
+  </main>
+
+  <footer style="text-align:center; padding: 1rem; background: #f1f1f1; font-size: 0.9rem;">
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+    <p>© 2024 TextCleanerTool.com</p>
+  </footer>
+
+  <script>
+    function cleanText() {
+      let text = document.getElementById("inputText").value;
+
+      // Cleaning logic
+      text = text.replace(/\r\n|\r|\n/g, " "); // Remove line breaks
+      text = text.replace(/\s+/g, " "); // Collapse multiple spaces
+      text = text.replace(/<[^>]*>/g, ""); // Remove HTML tags
+      text = text.replace(/[\u200B-\u200D\uFEFF]/g, ""); // Zero-width characters
+      text = text.replace(/[“”‘’]/g, '"'); // Smart quotes to plain
+      text = text.replace(/[–—]/g, "-"); // Dashes to hyphen
+      text = text.replace(/[•·▪]/g, ""); // List dots
+      text = text.trim();
+
+      document.getElementById("outputText").value = text;
+    }
+
+    function copyText() {
+      const output = document.getElementById("outputText");
+      output.select();
+      output.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Cleaned text copied!");
+    }
+  </script>
+</body>
+</html>
