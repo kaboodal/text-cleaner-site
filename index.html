@@ -19,15 +19,24 @@
       text-align: center;
       padding: 1.5rem 1rem;
     }
-    header .logo {
-      width: 80px;
-      height: 80px;
+    .logo-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      width: 60px;
+      height: 60px;
       object-fit: cover;
-      border: 4px solid white;
+      border: 2px solid white;
       border-radius: 50%;
       background-color: white;
-      padding: 4px;
-      margin-bottom: 0.75rem;
+      padding: 2px;
+    }
+    .title-text {
+      text-align: left;
     }
     h1 {
       font-size: 1.8rem;
@@ -136,9 +145,13 @@
 </head>
 <body>
   <header>
-    <img src="logo-text-cleaner.png" alt="Text Cleaner Tool Logo" class="logo">
-    <h1>Text Cleaner Tool</h1>
-    <p class="subtitle">Remove Line Breaks, Extra Spaces, HTML, Punctuation & More</p>
+    <div class="logo-title">
+      <img src="logo-text-cleaner.png" alt="Text Cleaner Tool Logo" class="logo">
+      <div class="title-text">
+        <h1>Text Cleaner Tool</h1>
+        <p class="subtitle">Remove Line Breaks, Extra Spaces, HTML, Punctuation & More</p>
+      </div>
+    </div>
   </header>
 
   <main>
