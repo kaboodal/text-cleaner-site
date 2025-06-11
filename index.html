@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Free online text cleaner to remove line breaks, extra spaces, HTML tags, punctuation & more. Clean and format your text for blogs, emails, websites, and documents." />
+  <title>Text Cleaner Tool – Clean & Format Text Instantly Online</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Text Cleaner Tool – Clean & Format Text Instantly Online" />
+  <meta property="og:description" content="Free online text cleaner to remove line breaks, extra spaces, HTML tags, punctuation & more." />
+  <meta property="og:image" content="https://textcleanertool.com/social-preview.png" />
+  <meta property="og:url" content="https://textcleanertool.com/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Text Cleaner Tool – Clean & Format Text Instantly Online" />
+  <meta name="twitter:description" content="Free tool to clean up and format text for emails, blogs, and websites." />
+  <meta name="twitter:image" content="https://textcleanertool.com/social-preview.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7842913593670746"
+     crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f8fa;
+      color: #0b2545;
+    }
+
+    header {
+      background: #002952;
+      color: white;
+      padding: 1rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+    }
+
+    .title-group h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .title-group p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      font-family: monospace;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+
+    .controls, .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 0.75rem 1rem;
+      background: #002952;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #004080;
+    }
+
+    footer {
+      background: #002952;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    footer a {
+      color: white;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .logo {
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo-text-cleaner.png" alt="Text Cleaner Tool Logo" class="logo">
+    <div class="title-group">
+      <h1>Text Cleaner Tool</h1>
+      <p>Remove Line Breaks, Extra Spaces, HTML, Punctuation & More</p>
+    </div>
+  </header>
+
+  <main>
+    <textarea id="inputText" placeholder="Paste your messy text here..."></textarea>
+
+    <div class="options">
+      <label><input type="checkbox" id="removeLineBreaks" checked> Remove line breaks</label>
+      <label><input type="checkbox" id="removeExtraSpaces" checked> Remove extra spaces</label>
+      <label><input type="checkbox" id="removePunctuation"> Remove punctuation</label>
+      <label><input type="checkbox" id="stripHtml"> Strip HTML</label>
+      <label><input type="checkbox" id="lowercase"> Convert to lowercase</label>
+      <label><input type="checkbox" id="removeEmptyLines"> Remove empty lines</label>
+    </div>
+
+    <div class="controls">
+      <button onclick="cleanText()">Clean Text</button>
+      <button onclick="copyOutput()">Copy Output</button>
+      <button onclick="clearAll()">Clear</button>
+    </div>
+
+    <textarea id="outputText" placeholder="Cleaned text will appear here..." readonly></textarea>
+
+    <div class="ad-container" style="text-align:center; margin-top:20px;">
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-7842913593670746"
+        data-ad-slot="1234567890"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+    <p>© 2025 TextCleanerTool</p>
+  </footer>
+
+  <script>
+    function cleanText() {
+      let text = document.getElementById('inputText').value;
+
+      if (document.getElementById('stripHtml').checked) {
+        text = text.replace(/<[^>]*>/g, '');
+      }
+      if (document.getElementById('removeLineBreaks').checked) {
+        text = text.replace(/[
+]+/g, ' ');
+      }
+      if (document.getElementById('removeExtraSpaces').checked) {
+        text = text.replace(/\s+/g, ' ').trim();
+      }
+      if (document.getElementById('removePunctuation').checked) {
+        text = text.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '');
+      }
+      if (document.getElementById('removeEmptyLines').checked) {
+        text = text.replace(/^\s*[
+]/gm, '');
+      }
+      if (document.getElementById('lowercase').checked) {
+        text = text.toLowerCase();
+      }
+
+      document.getElementById('outputText').value = text;
+    }
+
+    function copyOutput() {
+      const output = document.getElementById('outputText');
+      output.select();
+      document.execCommand('copy');
+    }
+
+    function clearAll() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('outputText').value = '';
+    }
+  </script>
+</body>
+</html>
