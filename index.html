@@ -197,33 +197,43 @@ data-full-width-responsive="true"></ins>
 <p>© 2025 TextCleanerTool</p>
 </footer>
 <script>
-function cleanText() {
-let text = document.getElementById('inputText').value;
-if (document.getElementById('stripHtml').checked) text = text.replace(/<[^>]*>/g, '');
-if (document.getElementById('removeLineBreaks').checked) text = text.replace(/[
-]+/g, ' ');
-if (document.getElementById('removeExtraSpaces').checked) text = text.replace(/\s+/g, ' ').trim();
-if (document.getElementById('removePunctuation').checked) text = text.replace(/[.,/#!$%^&*;:{}=\-_`~()\[\]]/g, '');
-if (document.getElementById('removeEmptyLines').checked) text = text.replace(/^\s*[\r\n]/gm, '');
-if (document.getElementById('lowercase').checked) text = text.toLowerCase();
-document.getElementById('outputText').value = text;
-updateCounter(text);
-}
-function copyOutput() {
-const output = document.getElementById('outputText');
-output.select();
-document.execCommand('copy');
-}
-function clearAll() {
-document.getElementById('inputText').value = '';
-document.getElementById('outputText').value = '';
-document.getElementById('counter').textContent = '';
-}
-function updateCounter(text) {
-const words = text.trim().split(/\s+/).filter(Boolean).length;
-const chars = text.length;
-document.getElementById('counter').textContent = `Words: ${words}, Characters: ${chars}`;
-}
+<script>
+  function cleanText() {
+    let text = document.getElementById('inputText').value;
+
+    if (document.getElementById('stripHtml').checked) {
+      text = text.replace(/<[^>]*>/g, '');
+    }
+    if (document.getElementById('removeLineBreaks').checked) {
+      text = text.replace(/[\r\n]+/g, ' ');
+    }
+    if (document.getElementById('removeExtraSpaces').checked) {
+      text = text.replace(/\s+/g, ' ').trim();
+    }
+    if (document.getElementById('removePunctuation').checked) {
+      text = text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+    }
+    if (document.getElementById('removeEmptyLines').checked) {
+      text = text.replace(/^\s*[\r\n]/gm, '');
+    }
+    if (document.getElementById('lowercase').checked) {
+      text = text.toLowerCase();
+    }
+
+    document.getElementById('outputText').value = text;
+  }
+
+  function copyOutput() {
+    const output = document.getElementById('outputText');
+    output.select();
+    document.execCommand('copy');
+  }
+
+  function clearAll() {
+    document.getElementById('inputText').value = '';
+    document.getElementById('outputText').value = '';
+  }
+</script>
 </script>
 </body>
 </html>
