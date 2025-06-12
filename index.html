@@ -1,130 +1,166 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Free online text cleaner that removes line breaks, extra spaces, HTML tags, punctuation, and special characters. Format text for emails, websites, and blogs easily." />
-  <title>Text Cleaner Tool – Clean & Format Text Online</title>
-  <meta property="og:title" content="Text Cleaner Tool – Clean & Format Text Online" />
-  <meta property="og:description" content="Free online text cleaner that removes formatting issues and makes your content clean, professional, and ready to paste." />
+  <meta name="description" content="Free online text cleaner to remove line breaks, extra spaces, HTML tags, punctuation & more. Clean and format your text for blogs, emails, websites, and documents." />
+  <title>Text Cleaner Tool – Clean & Format Text Instantly</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Text Cleaner Tool – Clean & Format Text Instantly" />
+  <meta property="og:description" content="Free online text cleaner to remove line breaks, extra spaces, HTML tags, punctuation & more." />
   <meta property="og:image" content="https://textcleanertool.com/social-preview.png" />
   <meta property="og:url" content="https://textcleanertool.com/" />
   <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Text Cleaner Tool – Clean & Format Text Online" />
-  <meta name="twitter:description" content="Instantly clean your text with our free online tool. Remove unwanted formatting and prepare content for publishing." />
+  <meta name="twitter:title" content="Text Cleaner Tool – Clean & Format Text Instantly" />
+  <meta name="twitter:description" content="Clean up your text for emails, blogs, websites, and documents by removing unwanted formatting and characters." />
   <meta name="twitter:image" content="https://textcleanertool.com/social-preview.png" />
-  <link rel="icon" href="logo-text-cleaner-fixed.png" type="image/png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo-text-cleaner.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7842913593670746" crossorigin="anonymous"></script>
+
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Roboto', sans-serif;
       background: #f7f8fa;
       color: #0b2545;
     }
+
     header {
       background: #002952;
       color: white;
       padding: 1.5rem 1rem;
+      text-align: center;
     }
+
     .logo-title {
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
     }
+
     .logo {
-      width: 60px;
-      height: 60px;
+      width: 64px;
+      height: 64px;
       object-fit: contain;
     }
-    .title-group {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .main-title {
+
+    .title-text h1 {
       font-size: 2rem;
       margin: 0;
     }
-    .subtitle {
+
+    .title-text .subtitle {
       font-size: 1rem;
-      margin: 0;
+      margin-top: 0.3rem;
     }
+
     main {
       max-width: 960px;
       margin: 2rem auto;
       padding: 1rem;
     }
+
     textarea {
       width: 100%;
       min-height: 160px;
-      font-family: monospace;
+      font-family: 'Roboto Mono', monospace;
       padding: 1rem;
+      margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 5px;
-      margin-bottom: 1rem;
+      resize: vertical;
     }
-    .options, .controls {
+
+    .options {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 1rem;
-      font-size: 0.9rem;
     }
+
     .options label {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.3rem;
+      font-size: 0.9rem;
     }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
     button {
       flex: 1 1 30%;
-      padding: 0.75rem;
+      padding: 0.8rem;
       background: #002952;
       color: white;
+      font-weight: bold;
       border: none;
       border-radius: 5px;
-      font-weight: bold;
+      cursor: pointer;
     }
+
     button:hover {
       background: #004080;
     }
-    .ad-container {
-      margin: 2rem 0;
-      text-align: center;
-    }
+
     .counters {
+      text-align: right;
       font-size: 0.85rem;
       color: #555;
-      text-align: right;
+      margin-bottom: 1rem;
     }
+
     footer {
       background: #002952;
       color: white;
       text-align: center;
-      padding: 1.5rem 1rem 1rem;
+      padding: 2rem 1rem 1rem;
       font-size: 0.9rem;
     }
+
     footer a {
       color: white;
       margin: 0 0.5rem;
       text-decoration: none;
     }
+
     footer a:hover {
       text-decoration: underline;
     }
+
+    .ad-container {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
     @media (max-width: 600px) {
+      button {
+        flex: 1 1 100%;
+      }
+
       .logo-title {
         flex-direction: column;
       }
-      .title-group {
+
+      .title-text {
         text-align: center;
-      }
-      button {
-        flex: 1 1 100%;
       }
     }
   </style>
@@ -132,52 +168,36 @@
 <body>
   <header>
     <div class="logo-title">
-      <img src="logo-text-cleaner.png" alt="Text Cleaner Tool Logo" class="logo" />
-      <div class="title-group">
-        <h1 class="main-title">Text Cleaner Tool</h1>
+      <img src="logo-text-cleaner.png" alt="Text Cleaner Tool Logo" class="logo">
+      <div class="title-text">
+        <h1>Text Cleaner Tool</h1>
         <p class="subtitle">Remove Line Breaks, Extra Spaces, HTML, Punctuation & More</p>
       </div>
     </div>
   </header>
 
   <main>
-    <section>
-      <h2>About Text Cleaner Tool</h2>
-      <p>Text Cleaner Tool is a free and user-friendly online utility designed to help writers, developers, students, and professionals clean up messy text. Whether you’ve copied text from a PDF, Word document, email, or web page, this tool helps remove unwanted formatting, such as extra spaces, line breaks, HTML tags, punctuation, and more.</p>
-    </section>
-    <section>
-      <h2>Why Use Our Tool?</h2>
-      <ul>
-        <li>🚀 Instantly remove formatting errors</li>
-        <li>📋 Prepare clean text for documents, blogs, and websites</li>
-        <li>🧼 Strip HTML and make everything plain text</li>
-        <li>💡 Great for email marketing, copywriters, coders, and more</li>
-      </ul>
-    </section>
-    <section>
-      <h2>How It Works</h2>
-      <p>Simply paste your text into the input box above, choose the cleaning options you want, and click "Clean Text". Your cleaned text will appear below, ready to be copied or used anywhere.</p>
-    </section>
-    <section>
-      <h2>Safe & Private</h2>
-      <p>No data is stored or shared. Everything happens in your browser, and your content remains private.</p>
-    </section>
     <textarea id="inputText" placeholder="Paste your messy text here..."></textarea>
+
     <div class="options">
       <label><input type="checkbox" id="removeLineBreaks" checked> Remove line breaks</label>
       <label><input type="checkbox" id="removeExtraSpaces" checked> Remove extra spaces</label>
-      <label><input type="checkbox" id="stripHtml"> Strip HTML tags</label>
       <label><input type="checkbox" id="removePunctuation"> Remove punctuation</label>
+      <label><input type="checkbox" id="stripHtml"> Strip HTML</label>
       <label><input type="checkbox" id="lowercase"> Convert to lowercase</label>
       <label><input type="checkbox" id="removeEmptyLines"> Remove empty lines</label>
     </div>
+
     <div class="controls">
-      <button onclick="cleanText()">Clean Text</button>
-      <button onclick="copyOutput()">Copy</button>
-      <button onclick="clearAll()">Clear</button>
+      <button type="button" onclick="cleanText()">Clean Text</button>
+      <button type="button" onclick="copyOutput()">Copy Output</button>
+      <button type="button" onclick="clearAll()">Clear</button>
     </div>
+
     <div class="counters" id="counter"></div>
-    <textarea id="outputText" readonly placeholder="Your cleaned text will appear here..."></textarea>
+
+    <textarea id="outputText" placeholder="Cleaned text will appear here..." readonly></textarea>
+
     <div class="ad-container">
       <ins class="adsbygoogle"
         style="display:block"
@@ -185,31 +205,36 @@
         data-ad-slot="1234567890"
         data-ad-format="auto"
         data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </main>
 
   <footer>
     <p>
       <a href="/privacy.html">Privacy Policy</a> |
-      <a href="/terms.html">Terms of Use</a> |
+      <a href="/terms.html">Terms</a> |
       <a href="/contact.html">Contact</a>
     </p>
-    <p>© 2025 TextCleanerTool</p>
+    <p>© 2025 Text Cleaner Tool</p>
   </footer>
 
   <script>
     function cleanText() {
       let text = document.getElementById('inputText').value;
-      if (document.getElementById('stripHtml').checked) text = text.replace(/<[^>]*>/g, '');
-      if (document.getElementById('removeLineBreaks').checked) text = text.replace(/[
-]+/g, ' ');
-      if (document.getElementById('removeExtraSpaces').checked) text = text.replace(/\s+/g, ' ').trim();
-      if (document.getElementById('removePunctuation').checked) text = text.replace(/[.,/#!$%^&*;:{}=\-_`~()\[\]]/g, '');
-      if (document.getElementById('removeEmptyLines').checked) text = text.replace(/^\s*[\r\n]/gm, '');
-      if (document.getElementById('lowercase').checked) text = text.toLowerCase();
+
+      if (document.getElementById('stripHtml').checked)
+        text = text.replace(/<[^>]*>/g, '');
+      if (document.getElementById('removeLineBreaks').checked)
+        text = text.replace(/[\r\n]+/g, ' ');
+      if (document.getElementById('removeExtraSpaces').checked)
+        text = text.replace(/\s+/g, ' ').trim();
+      if (document.getElementById('removePunctuation').checked)
+        text = text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"\']/g, '');
+      if (document.getElementById('removeEmptyLines').checked)
+        text = text.replace(/^\s*[\r\n]/gm, '');
+      if (document.getElementById('lowercase').checked)
+        text = text.toLowerCase();
+
       document.getElementById('outputText').value = text;
       updateCounter(text);
     }
@@ -217,7 +242,7 @@
     function copyOutput() {
       const output = document.getElementById('outputText');
       output.select();
-      document.execCommand('copy');
+      navigator.clipboard.writeText(output.value);
     }
 
     function clearAll() {
